@@ -13,6 +13,31 @@ void show_list(struct list *p);
 void free_list(struct list *p);
 void sum_list(struct list *p);
 
+int main(void)
+{
+ double data;
+ FILE *fp;
+ char *fname = "data.txt";
+ struct list *head; //リストのhead(先頭)の作成
+
+ head = alloc_list(0);
+ fp = fopen(fname, "r");
+ 
+ if (fp ==NULL)
+ {
+  printf("Not found such a file\n");
+  return -1;
+ }
+ while (fscanf(fp,"%lf",&data) !=EOF)
+ {
+  data = data;
+  add_list(data, head);
+ }
+ show_list(head);
+ sum_list(head);
+ free_list(head);
+ return 0;
+}
 struct list *alloc_list(double data){
  struct list *new = NULL;
  new = (struct list *)malloc(sizeof(struct list)); //malloc関数 →　指定バイト分、メモリ領域を確保する
@@ -50,9 +75,19 @@ void show_list(struct list *p)
  }
 }
 
+void sum_list(struct list *p)
+{
+ double sum = 0;
+ while(p != NULL){
+  sum += p->data;
+  p = p->next;
+ }
+ printf("sum_listを表示");
+ printf("%lf\n", sum);
+}
 void free_list(struct list *p)
 {
- struct lsit *p2;
+ struct list *p2;
  while(p != NULL)
  {
   p2 = p->next;//p2にnextにアクセスしたpを代入
@@ -60,3 +95,5 @@ void free_list(struct list *p)
   p = p2;
  }
 }
+
+
