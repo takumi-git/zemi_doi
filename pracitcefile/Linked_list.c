@@ -73,7 +73,7 @@ void free_list(struct list *p)
  }
 }
 
-void buble_sort(struct list *p)
+void bubble_sort(struct list *p)
 {
  struct list *head;//headをさすポインタ
  struct list *back;//back(配列の最後を指す)ポインタ
@@ -125,7 +125,7 @@ int main(void)
   data = data;
   add_list(data, head);
  }
- buble_sort(head);
+ bubble_sort(head);
  show_list(head);
  sum_list(head);
  free_list(head);
