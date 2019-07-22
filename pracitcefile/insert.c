@@ -155,9 +155,10 @@ int main(void)
  while (fscanf(fp, "%lf", &data) != EOF) //ファイル最後まで数値の読み込み
  {
    data = data;
-   insert_cell(p, 32);
-   add_list(data, head);
+   insert_cell(p,data);
    p = &((*p)->next);
+   add_list(data, head);
+   
  }
 
  //bubble_sort(head);
