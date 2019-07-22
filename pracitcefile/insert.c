@@ -5,25 +5,19 @@
 struct list
 {
  double data;
+ int value;
  struct list *next;
 };
 
-struct cell
-{
- int value;
- struct cell *next;
-};
 
-/* struct list *
+ struct list *
 alloc_list(double data);
 int add_list(double data, struct list *head);
 void show_list(struct list *p);
 void free_list(struct list *p);
-void sum_list(struct list *p);*/
-
-struct cell *
-void insert_cell(struct cell **p,int new_value);
-void deleate_cell(struct cell **p);
+void sum_list(struct list *p);
+void insert_cell(struct list **p,int new_value);
+void deleate_cell(struct list **p);
 
 struct list *alloc_list(double data)
 {
@@ -53,7 +47,7 @@ int add_list(double data, struct list *head)
   prev = prev->next; //nextにアクセスのprevを代入
  prev->next = next;  //nextにアクセスのprevにnextを代入して処理を終了
  return 0;
-} 
+}
 
 void show_list(struct list *p)
 {
@@ -88,18 +82,18 @@ void free_list(struct list *p)
 }
 
 
-void insert_cell(struct cell **p,int new_value)
+void insert_cell(struct list **p,int new_value)
 {
- struct cell *new_cell;
- new_cell = (struct cell *)malloc(sizeof(struct cell));
+ struct list *new_cell;
+ new_cell = (struct list *)malloc(sizeof(struct list));
  new_cell->value = new_value;
  new_cell->next = *p;
  *p = new_cell;
 }
 
-void deleate_cell(struct cell **p)
+void deleate_cell(struct list **p)
 {
- struct cell *target;
+ struct list *target;
  target = *p;
  *p = target->next;
  free((void *)target);
@@ -147,8 +141,8 @@ int main(void)
  double data;
  FILE *fp;
  char *fname = "data.txt";
- //struct list *head; //リストのhead(先頭)の作成
- struct cell *head = NULL, **p;
+ struct list *head = NULL, **p; //リストのhead(先頭)の作成
+  p = &head;
  //head = alloc_list(0);
  fp = fopen(fname, "r");
 
@@ -157,17 +151,18 @@ int main(void)
   printf("Not found such a file\n");
   return -1;
  }
- p = &head;
+
  while (fscanf(fp, "%lf", &data) != EOF) //ファイル最後まで数値の読み込み
  {
-  //data = data;
-  //add_list(data, head);
-  insert_cell(p, data);
-  p = &((*p)->next);
+   data = data;
+   insert_cell(p, 32);
+   add_list(data, head);
+   p = &((*p)->next);
  }
+
  //bubble_sort(head);
- //show_list(head);
+ show_list(head);
  //sum_list(head);
- //free_list(head);
+ free_list(head);
  return 0;
 }
