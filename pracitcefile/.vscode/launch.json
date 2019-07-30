@@ -6,18 +6,6 @@
  "configurations": [
   
   {
-   "name": "(lldb) Launch",
-   "type": "cppdbg",
-   "request": "launch",
-   "program": "enter program name, for example ${workspaceFolder}/a.out",
-   "args": [],
-   "stopAtEntry": false,
-   "cwd": "${workspaceFolder}",
-   "environment": [],
-   "externalConsole": false,
-   "MIMode": "lldb"
-  },
-  { 
    "name": "(lldb) Attach",
    "type": "cppdbg",
    "request": "attach",
