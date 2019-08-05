@@ -115,28 +115,35 @@ void bubble_sort(List *p)
   }
 }
 
-
 int insert_list(double data, List *head)
 {
-  List *next = NULL;
+  List *next_list = NULL;
   List *prev = head;
-  List *p1;
-  List *p2;
-  List *p3;
-  List *pointer;
+  int roop = 0;
 
-  next = alloc_list(data);
-  if(next==NULL)
+  next_list = alloc_list(data); //リストができる
+  if (next_list == NULL)        //メモリが取れない＝アロックリストをみるとNULL
     return -1;
-  p1 = head->next;
-  p2 = p1->next;
-  p3 = p2->next;
-  pointer = head->next;
-  
-  puts("List3つ目を表示");
 
-  printf("%lf\n", p3->data);
+  while (prev->next != NULL) //最後まで見る
+  {
+    if (roop == 3)
+    {
+      next_list->next = prev->next; //新しいリストのnextにもともとのnextをコピー
+      prev->next = next_list;       //元のnextに新しいリストを指すアドレス
+      roop++;
+    }
+    else
+    {
+      prev = prev->next;
+      roop++;
+    }
+  }
+  return 0;
 }
+
+
+
 int main(void)
 {
   double data;
@@ -156,11 +163,11 @@ int main(void)
   {
     add_list(data, head); 
   }
-  add_list(6, head);
-  insert_list(10, head);
+  //add_list(6, head);
   bubble_sort(head);
+  insert_list(10, head);
   show_list(head);
-  sum_list(head);
+  //sum_list(head);
   free_list(head);
   return 0;
 }
