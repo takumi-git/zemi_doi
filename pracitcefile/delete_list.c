@@ -120,7 +120,7 @@ int insert_list(double data, List *head)
 {
  List *new_list = NULL;
  List *prev = head;
- int roop = 0;
+ int roop = 0;//roop カウンター
 
  new_list = alloc_list(data); //リスト作成
  if (new_list == NULL)        //メモリが取れない＝アロックリストをみるとNULL
@@ -179,7 +179,7 @@ int main(void)
  show_list(head);
  delete_list(head,head->next->next);
  puts("\n");//見やすさのための改行
- show_list(head);
+ show_list(head);//delete後のリスト表示
  //sum_list(head);
  free_list(head);
  return 0;
