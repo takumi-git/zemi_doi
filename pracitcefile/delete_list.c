@@ -15,7 +15,7 @@ void show_list(List *p);
 void free_list(List *p);
 void sum_list(List *p);
 int insert_list(double data, List *head);
-void delete_list(List *p);
+void delete_list(List *start,List *target);
 
 List *alloc_list(double data)
 {
@@ -122,11 +122,11 @@ int insert_list(double data, List *head)
  List *prev = head;
  int roop = 0;
 
- new_list = alloc_list(data); //リストができる
+ new_list = alloc_list(data); //リスト作成
  if (new_list == NULL)        //メモリが取れない＝アロックリストをみるとNULL
   return -1;
 
- while (prev->next != NULL) //最後まで見る
+ while (prev->next != NULL) //リストの最後まで探索
  {
   if (roop == 3)
   {
@@ -143,10 +143,17 @@ int insert_list(double data, List *head)
  return 0;
 }
 
-void delete_list(List *p)
+void delete_list (List *head,List *target)
 {
-}
+ List *p = head; //リストの先頭をさすポインター
 
+ //消去用のtargetまで探索
+ while (p->next !=target){
+  p = p->next;//pをtargetまで動かす
+ }
+ p->next = p->next->next;//targetの１つ前のオブジェクトのnextをひとつ飛ばしのオブジェクトへと入れ替え
+ free(target);//targetのオブジェクトの消去
+}
 int main(void)
 {
  double data;
@@ -170,10 +177,10 @@ int main(void)
  bubble_sort(head);
  insert_list(10, head);
  show_list(head);
- delete_list(head);
- puts("\n");
+ delete_list(head,head->next->next);
+ puts("\n");//見やすさのための改行
  show_list(head);
  //sum_list(head);
- //free_list(head);
+ free_list(head);
  return 0;
 }
