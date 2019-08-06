@@ -15,6 +15,7 @@ void show_list(List *p);
 void free_list(List *p);
 void sum_list(List *p);
 int insert_list(double data, List *head);
+void delete_list(List *p);
 
 List *alloc_list(double data)
 {
@@ -117,20 +118,20 @@ void bubble_sort(List *p)
 
 int insert_list(double data, List *head)
 {
-  List *next_list = NULL;
+  List *new_list = NULL;
   List *prev = head;
   int roop = 0;
 
-  next_list = alloc_list(data); //リストができる
-  if (next_list == NULL)        //メモリが取れない＝アロックリストをみるとNULL
+  new_list = alloc_list(data); //リストができる
+  if (new_list == NULL)        //メモリが取れない＝アロックリストをみるとNULL
     return -1;
 
   while (prev->next != NULL) //最後まで見る
   {
     if (roop == 3)
     {
-      next_list->next = prev->next; //新しいリストのnextにもともとのnextをコピー
-      prev->next = next_list;       //元のnextに新しいリストを指すアドレス
+      new_list->next = prev->next; //新しいリストのnextにもともとのnextをコピー
+      prev->next = new_list;       //元のnextに新しいリストを指すアドレス
       roop++;
     }
     else
@@ -142,7 +143,10 @@ int insert_list(double data, List *head)
   return 0;
 }
 
-
+void delete_list(List *p)
+{
+  
+}
 
 int main(void)
 {
@@ -167,7 +171,10 @@ int main(void)
   bubble_sort(head);
   insert_list(10, head);
   show_list(head);
+  delete_list(head);
+  puts("\n");
+  show_list(head);
   //sum_list(head);
-  free_list(head);
+  //free_list(head);
   return 0;
 }
