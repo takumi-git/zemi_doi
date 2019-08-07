@@ -183,7 +183,7 @@ int main(void)
  insert_list(2, head);
  bubble_sort(head);
  show_list(head);
- delete_list(head, head->next);
+ delete_list(head, head->next);//0
  delete_list(head, head->next->next);//2
  delete_list(head, head->next->next->next);//4
  delete_list(head, head->next->next->next->next);//6
