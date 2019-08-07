@@ -195,3 +195,5 @@ int main(void)
  free_list(head);
  return 0;
 }
+//insert delete
+
