@@ -154,6 +154,11 @@ void delete_list (List *head,List *target)
  p->next = p->next->next;//targetの１つ前のオブジェクトのnextをひとつ飛ばしのオブジェクトへと入れ替え
  free(target);//targetのオブジェクトの消去
 }
+
+/*メイン関数ここでファイルを読み込んで
+ *上記で書いたプログラムの実行をする
+ *
+*/
 int main(void)
 {
  double data;
@@ -174,10 +179,15 @@ int main(void)
   add_list(data, head);
  }
  //add_list(6, head);
+ insert_list(8, head);
+ insert_list(2, head);
  bubble_sort(head);
- insert_list(10, head);
  show_list(head);
- delete_list(head,head->next->next);
+ delete_list(head, head->next);
+ delete_list(head, head->next->next);//2
+ delete_list(head, head->next->next->next);//4
+ delete_list(head, head->next->next->next->next);//6
+ delete_list(head, head->next->next->next->next->next);//8
  puts("\n");//見やすさのための改行
  show_list(head);//delete後のリスト表示
  //sum_list(head);
