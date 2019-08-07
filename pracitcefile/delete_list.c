@@ -188,7 +188,7 @@ int main(void)
  delete_list(head, head->next->next->next);//4
  delete_list(head, head->next->next->next->next);//6
  delete_list(head, head->next->next->next->next->next);//8
- puts("\n");//見やすさのための改行
+ puts("\n");//比較表示結果
  puts("リスト消去後の結果を表示");
  show_list(head); //delete後のリスト表示
  //sum_list(head);
