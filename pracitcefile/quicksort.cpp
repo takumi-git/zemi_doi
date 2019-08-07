@@ -60,20 +60,23 @@ void quick_sort(int array[], int left, int right)
 int main(void)
 {
   int array[10] = {6, 9, 12, 7, 15, 23, 2, 10, 4, 20};//1つ目の配列
-  //int array[20] = {34, 64, 94, 73, 16, 33, 31, 68, 75, 89, 1, 78, 87, 76, 87, 59, 6, 5, 75, 65} 2つ目の配列
+  //int array[20] = {34, 64, 94, 73, 16, 33, 31, 68, 75, 89, 1, 78, 87, 76, 87, 59, 6, 5, 75, 65};//2つ目の配列 
   int i;
 
   printf("Before sort: ");
-  for (i = 0; i < 10; i++) //for(i =0;i<20; i++)
+  for (i = 0; i < 10; i++) 
+  //for(i =0;i<20; i++)
   {
     printf("%d ", array[i]);
   }
   printf("\n");
 
-  quick_sort(array, 0, 9); //quick_sort(array,0,19);
+  quick_sort(array, 0, 9); 
+  //quick_sort(array,0,19);
 
   printf("After sort: ");
-  for (i = 0; i < 10; i++) //for(i = 0;i<20;i++)
+  for (i = 0; i < 10; i++) 
+  //for(i = 0;i<20;i++)
   {
     printf("%d ", array[i]);
   }
