@@ -163,7 +163,7 @@ int main(void)
 {
  double data;
  FILE *fp;
- char *fname = "data.txt";
+ char *fname = "data.txt";//データは自分で指定しなければならない
  List *head; //リストのhead(先頭)の作成
 
  head = alloc_list(0);
@@ -189,7 +189,8 @@ int main(void)
  delete_list(head, head->next->next->next->next);//6
  delete_list(head, head->next->next->next->next->next);//8
  puts("\n");//見やすさのための改行
- show_list(head);//delete後のリスト表示
+ puts("リスト消去後の結果を表示");
+ show_list(head); //delete後のリスト表示
  //sum_list(head);
  free_list(head);
  return 0;
